@@ -1,0 +1,11 @@
+body{background-color:#222;}
+
+#c
+{
+    background-color:purple;
+    width:100px;
+    height:30px;
+    color:white;
+    cursor:pointer;
+    margin:auto;
+}
