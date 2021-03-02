@@ -29,25 +29,10 @@ for(i=0;i<d.data.length;i++)
             grey=(d.data[i]*0.3+d.data[i+1]*0.59+d.data[i+2]*0.11);
             grey=256/t*Math.floor(grey/(256/t));
             d.data[i]=grey;
-            // switch (grey) {
-            //     case 32:
-            //         str+='..'
-            //         break;
-            //     case 96:
-            //         str+='QQ'
-            //         break;
-            //     case 160:
-            //         str+='**'
-            //         break;
-            //     default:
-                
-            //         break;
-            // }
             if(grey==0){str+='...';}
             else if(grey==64){str+=';;;';}
             else if(grey==128){str+='###';}
-            else if(grey==192){str+='&&&'}
-            else{str+='$$';}
+            else{str+='&&&'}
         }
         if((i/4)%canv.width==canv.width-1){str+='\n';}
     }
