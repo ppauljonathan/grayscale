@@ -7,10 +7,19 @@ document.body.appendChild(canv);
 c=canv.getContext("2d");
 c.drawImage(img,0,0);}
 
+let change=0;
+
+btn=document.getElementById("c");
+p=document.getElementById("ascii");
+
 const t=4;
+
+let str=""
 
 function gray()
 {
+    
+    if(change==1){return;}
     d=c.getImageData(0,0,canv.width,canv.height);
 
 for(i=0;i<d.data.length;i++)
@@ -18,12 +27,33 @@ for(i=0;i<d.data.length;i++)
         if(i%4==0)
         {
             grey=(d.data[i]*0.3+d.data[i+1]*0.59+d.data[i+2]*0.11);
-            grey=256/t*(Math.floor(grey/(256/t))+Math.ceil(grey/(256/t)))/2;
+            grey=256/t*Math.floor(grey/(256/t));
             d.data[i]=grey;
-            d.data[i+1]=grey;
-            d.data[i+2]=grey;
+            // switch (grey) {
+            //     case 32:
+            //         str+='..'
+            //         break;
+            //     case 96:
+            //         str+='QQ'
+            //         break;
+            //     case 160:
+            //         str+='**'
+            //         break;
+            //     default:
+                
+            //         break;
+            // }
+            if(grey==0){str+='...';}
+            else if(grey==64){str+=';;;';}
+            else if(grey==128){str+='###';}
+            else if(grey==192){str+='&&&'}
+            else{str+='$$';}
         }
+        if((i/4)%canv.width==canv.width-1){str+='\n';}
     }
     c.clearRect(0,0,canv.width,canv.height);
-    c.putImageData(d,0,0);
+    change=1;
+    // c.putImageData(d,0,0);
+    p.innerText=str;
 }
+
