@@ -1,5 +1,5 @@
 img=new Image;
-img.src="image.jpg";
+img.src="Capture.JPG";
 img.onload=function(){
 canv=document.createElement("canvas");
 canv.width=img.width;canv.height=img.height;
